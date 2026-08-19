@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Desiretech — Turn Your Desire Into Digital Growth</title>
+<meta name="description" content="Desiretech helps Indian brands grow across Amazon, Myntra, Flipkart, Meesho and Blinkit — plus website development, digital marketing and GST/taxation support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#050505;
+  --navy:#07111F;
+  --blue:#1677FF;
+  --cyan:#00D9FF;
+  --violet:#6C4DFF;
+  --magenta:#C026FF;
+  --red:#FF3040;
+  --white:#FFFFFF;
+  --soft:#F5F7FA;
+  --muted: rgba(245,247,250,.62);
+  --faint: rgba(245,247,250,.38);
+  --line: rgba(255,255,255,.12);
+  --glass: rgba(255,255,255,.05);
+  --ease: cubic-bezier(.16,1,.3,1);
+  --disp: 'Space Grotesk', 'Inter', sans-serif;
+  --body: 'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+html,body{background:var(--black);color:var(--white);font-family:var(--body);overflow-x:hidden;}
+body{min-height:100vh;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--blue);color:#fff;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+}
+
+/* ---------- utility ---------- */
+.eyebrow{font-family:var(--disp);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:600;}
+.grad-text{background:linear-gradient(100deg,var(--blue),var(--violet) 60%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.grad-text-2{background:linear-gradient(100deg,var(--violet),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 6vw;}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.94);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease);}
+.reveal-scale.in{opacity:1;transform:scale(1);}
+.stagger .r-child{transition-delay:calc(var(--i) * 90ms);}
+
+.glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0;}
+
+/* ---------- buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--disp);font-weight:600;font-size:.92rem;letter-spacing:.02em;padding:1rem 1.7rem;border-radius:100px;transition:transform .45s var(--ease),box-shadow .45s var(--ease),filter .45s var(--ease);white-space:nowrap;}
+.btn-primary{background:linear-gradient(100deg,var(--blue),var(--cyan));color:#04101f;box-shadow:0 8px 30px -8px rgba(22,119,255,.6);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px -6px rgba(0,217,255,.65);filter:brightness(1.08);}
+.btn-primary svg{transition:transform .4s var(--ease);}
+.btn-primary:hover svg{transform:translateX(5px);}
+.btn-ghost{border:1px solid var(--line);color:var(--white);backdrop-filter:blur(14px);background:rgba(255,255,255,.02);}
+.btn-ghost:hover{border-color:var(--cyan);background:rgba(0,217,255,.08);transform:translateY(-2px);}
+.btn-wa{background:linear-gradient(100deg,#12c96b,#0ea856);color:#04150c;box-shadow:0 8px 26px -8px rgba(18,201,107,.55);}
+.btn-wa:hover{filter:brightness(1.08);transform:translateY(-2px);}
+.btn-block{width:100%;justify-content:center;}
+
+/* ---------- nav ---------- */
+#nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:900;width:min(1180px,92vw);display:flex;align-items:center;justify-content:space-between;padding:.6rem .7rem .6rem 1.1rem;border-radius:100px;border:1px solid var(--line);background:rgba(6,8,14,.55);backdrop-filter:blur(18px) saturate(140%);transition:padding .4s var(--ease),background .4s var(--ease),width .4s var(--ease),box-shadow .4s var(--ease);}
+#nav.shrink{padding:.4rem .5rem .4rem .9rem;background:rgba(5,6,10,.78);box-shadow:0 10px 40px -14px rgba(0,0,0,.7);width:min(1080px,92vw);}
+.nav-logo{display:flex;align-items:center;gap:.55rem;}
+.nav-logo img{height:30px;width:auto;}
+.nav-logo span{font-family:var(--disp);font-weight:700;font-size:1.02rem;letter-spacing:.01em;}
+.nav-links{display:flex;align-items:center;gap:2.1rem;}
+.nav-links a{font-size:.86rem;font-weight:500;color:var(--muted);position:relative;padding:.3rem 0;transition:color .3s;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:width .35s var(--ease);}
+.nav-links a:hover{color:var(--white);}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%;}
+.nav-links a.active{color:var(--white);}
+.nav-right{display:flex;align-items:center;gap:.6rem;}
+.nav-wa{display:flex;align-items:center;gap:.5rem;font-family:var(--disp);font-size:.8rem;font-weight:700;letter-spacing:.03em;color:#04150c;background:linear-gradient(100deg,#16d977,#0ea856);padding:.62rem 1.1rem;border-radius:100px;transition:transform .4s var(--ease),filter .4s;}
+.nav-wa:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.07);}
+.burger{display:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);align-items:center;justify-content:center;position:relative;background:rgba(255,255,255,.03);}
+.burger span,.burger span::before,.burger span::after{content:'';display:block;position:absolute;width:16px;height:1.4px;background:#fff;transition:transform .35s var(--ease),opacity .35s;}
+.burger span::before{transform:translateY(-5px);}
+.burger span::after{transform:translateY(5px);}
+.burger.open span{background:transparent;}
+.burger.open span::before{transform:rotate(45deg);}
+.burger.open span::after{transform:rotate(-45deg);}
+
+#mobile-menu{position:fixed;inset:0;z-index:850;background:radial-gradient(circle at 70% 20%,rgba(108,77,255,.25),transparent 60%),rgba(4,5,9,.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;justify-content:center;padding:8vh 9vw;opacity:0;pointer-events:none;transition:opacity .5s var(--ease);}
+#mobile-menu.open{opacity:1;pointer-events:auto;}
+#mobile-menu a{display:block;font-family:var(--disp);font-size:2.5rem;font-weight:600;padding:.4rem 0;color:var(--white);opacity:0;transform:translateY(24px) scale(.97);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+#mobile-menu.open a{opacity:1;transform:translateY(0) scale(1);}
+#mobile-menu a:nth-child(1){transition-delay:.05s;}
+#mobile-menu a:nth-child(2){transition-delay:.11s;}
+#mobile-menu a:nth-child(3){transition-delay:.17s;}
+#mobile-menu a:nth-child(4){transition-delay:.23s;}
+#mobile-menu a:nth-child(5){transition-delay:.29s;}
+#mobile-menu .mm-foot{margin-top:3rem;opacity:0;transition:opacity .6s var(--ease) .4s;}
+#mobile-menu.open .mm-foot{opacity:1;}
+
+/* ---------- pages ---------- */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;background:var(--black);padding-top:8rem;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(60% 50% at 22% 28%, rgba(22,119,255,.35), transparent 60%),
+  radial-gradient(55% 45% at 78% 18%, rgba(108,77,255,.30), transparent 60%),
+  radial-gradient(40% 40% at 85% 78%, rgba(0,217,255,.16), transparent 60%),
+  linear-gradient(180deg,#050505 0%,#060a14 55%,#050505 100%);
+}
+.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(60% 60% at 50% 30%,#000,transparent);opacity:.7;}
+.particle{position:absolute;border-radius:50%;background:var(--cyan);opacity:.5;filter:blur(1px);animation:float 9s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-26px);}}
+.hero-inner{position:relative;z-index:3;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:100px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:.75rem;color:var(--muted);margin-bottom:2rem;opacity:0;animation:fadeUp 1s var(--ease) .1s forwards;}
+.dot-live{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.hero h1{font-family:var(--disp);font-weight:700;line-height:.98;letter-spacing:-.01em;font-size:clamp(2.6rem,8vw,6.4rem);}
+.hero h1 .line{display:block;overflow:hidden;}
+.hero h1 .line span{display:block;opacity:0;transform:translateY(100%);animation:lineUp .9s var(--ease) forwards;}
+.hero h1 .line:nth-child(1) span{animation-delay:.35s;}
+.hero h1 .line:nth-child(2) span{animation-delay:.5s;}
+@keyframes lineUp{to{opacity:1;transform:translateY(0);}}
+.hero-sub{max-width:520px;font-size:1.05rem;color:var(--muted);margin:1.7rem 0 2.4rem;opacity:0;animation:fadeUp 1s var(--ease) .75s forwards;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) .9s forwards;}
+.hero-scroll{position:absolute;bottom:2.4rem;left:6vw;z-index:3;display:flex;align-items:center;gap:.6rem;font-size:.75rem;color:var(--faint);letter-spacing:.05em;opacity:0;animation:fadeUp 1s var(--ease) 1.3s forwards;}
+.hero-scroll .sline{width:1px;height:34px;background:linear-gradient(var(--cyan),transparent);animation:scrollLine 2s ease-in-out infinite;}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
+
+.hero-visual{position:absolute;z-index:2;right:-6%;top:12%;width:56%;max-width:640px;opacity:0;animation:heroVis 1.3s var(--ease) .6s forwards;}
+@keyframes heroVis{from{opacity:0;transform:scale(.9) translateY(30px);}to{opacity:.95;transform:scale(1) translateY(0);}}
+@media(max-width:900px){.hero-visual{display:none;}}
+
+/* floating card mockups (built with CSS, not external images) */
+.float-card{position:absolute;border-radius:20px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02));backdrop-filter:blur(14px);box-shadow:0 30px 60px -20px rgba(0,0,0,.6);padding:1rem 1.1rem;animation:drift 7s ease-in-out infinite;}
+@keyframes drift{0%,100%{transform:translateY(0) rotate(var(--rot,0deg));}50%{transform:translateY(-16px) rotate(var(--rot,0deg));}}
+
+/* ---------- section shell ---------- */
+.section{position:relative;padding:9rem 0;overflow:hidden;}
+.section-tight{padding:6rem 0;}
+.section-dark{background:var(--black);}
+.section-navy{background:linear-gradient(180deg,#07111F,#0a1730);}
+.section-light{background:var(--soft);color:#0b0d12;}
+.section-light .eyebrow{color:var(--blue);}
+.section-violet{background:linear-gradient(180deg,#0b0714,#1a0e33);}
+
+.kicker{display:flex;align-items:center;gap:.9rem;margin-bottom:1.6rem;}
+.kicker .rule{width:34px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent);}
+
+/* ---------- story ---------- */
+.story-head{font-family:var(--disp);font-weight:700;font-size:clamp(2rem,5.6vw,4.2rem);line-height:1.05;letter-spacing:-.01em;}
+.story-list{margin:2.6rem 0;display:flex;flex-direction:column;gap:.2rem;}
+.story-list div{font-family:var(--disp);font-size:clamp(1.3rem,3vw,2rem);color:var(--faint);padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.06);transition:color .4s,padding-left .4s;}
+.story-list div:hover{color:var(--white);padding-left:.6rem;}
+
+/* ---------- ecosystem ---------- */
+.eco-wrap{position:relative;width:100%;max-width:680px;aspect-ratio:1/1;margin:4rem auto 0;}
+.eco-ring{position:absolute;inset:0;border:1px dashed rgba(255,255,255,.1);border-radius:50%;animation:spin 90s linear infinite;}
+.eco-ring.r2{inset:9%;animation-duration:70s;animation-direction:reverse;border-color:rgba(0,217,255,.1);}
+@keyframes spin{to{transform:rotate(360deg);}}
+.eco-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:128px;height:128px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#1b2a52,#050914);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(22,119,255,.45);z-index:3;}
+.eco-center img{width:52px;}
+.eco-node{position:absolute;width:auto;transform:translate(-50%,-50%);z-index:2;}
+.eco-node button{display:flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:100px;border:1px solid var(--line);background:rgba(10,14,24,.75);backdrop-filter:blur(10px);font-size:.78rem;font-family:var(--disp);font-weight:600;white-space:nowrap;transition:transform .4s var(--ease),border-color .4s,box-shadow .4s;}
+.eco-node button:hover{transform:scale(1.12);border-color:var(--cyan);box-shadow:0 0 30px rgba(0,217,255,.35);}
+.eco-node .nd{width:6px;height:6px;border-radius:50%;background:var(--cyan);}
+.eco-svg{position:absolute;inset:0;z-index:1;}
+.eco-svg line{stroke:rgba(0,217,255,.28);stroke-width:1;}
+
+/* ---------- horizontal services ---------- */
+.hscroll{display:flex;gap:1.4rem;overflow-x:auto;padding:1rem 6vw 2.5rem;scroll-snap-type:x mandatory;scrollbar-width:none;}
+.hscroll::-webkit-scrollbar{display:none;}
+.hpanel{scroll-snap-align:start;flex:0 0 min(78vw,460px);height:520px;border-radius:28px;position:relative;overflow:hidden;padding:2.2rem;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid var(--line);transition:transform .5s var(--ease);}
+.hpanel:hover{transform:translateY(-8px);}
+.hpanel::before{content:'';position:absolute;inset:0;opacity:.9;z-index:0;}
+.hpanel > *{position:relative;z-index:2;}
+.hpanel::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.75) 100%);z-index:1;}
+.hpanel.p1::before{background:radial-gradient(120% 100% at 30% 0%,#1747b8,#050914 70%);}
+.hpanel.p2::before{background:radial-gradient(120% 100% at 70% 0%,#6c2bd9,#0b0714 70%);}
+.hpanel.p3::before{background:radial-gradient(120% 100% at 30% 100%,#0e3a52,#050505 70%);}
+.hpanel .hp-tag{font-family:var(--disp);font-size:.72rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:.8rem;}
+.hpanel h3{font-family:var(--disp);font-size:2rem;font-weight:700;margin-bottom:.7rem;}
+.hpanel p{color:var(--muted);font-size:.92rem;max-width:34ch;margin-bottom:1.4rem;}
+.hpanel-arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;transition:transform .4s var(--ease),background .4s;}
+.hpanel:hover .hpanel-arrow{background:var(--white);color:#000;transform:rotate(45deg);}
+
+/* ---------- emotional ---------- */
+.emo{text-align:center;padding:11rem 0;}
+.emo h2{font-family:var(--disp);font-weight:700;font-size:clamp(2.4rem,6.4vw,5rem);line-height:1.02;}
+.emo-words{display:flex;flex-wrap:wrap;justify-content:center;gap:.9rem 1.6rem;margin:2.6rem 0;}
+.emo-words span{font-family:var(--disp);font-size:clamp(1.1rem,2.4vw,1.6rem);color:var(--faint);}
+
+/* ---------- journey ---------- */
+.journey{display:flex;flex-direction:column;gap:0;max-width:420px;margin:4rem auto 0;}
+.jstep{display:flex;align-items:center;gap:1.4rem;padding:1.3rem 0;position:relative;}
+.jstep .jl{position:relative;width:14px;height:14px;border-radius:50%;background:var(--black);border:2px solid var(--cyan);flex-shrink:0;box-shadow:0 0 16px rgba(0,217,255,.5);}
+.jstep::before{content:'';position:absolute;left:6px;top:-50%;width:1px;height:100%;background:linear-gradient(var(--blue),var(--violet));}
+.jstep:first-child::before{display:none;}
+.jstep b{font-family:var(--disp);font-size:1.5rem;font-weight:700;}
+
+/* ---------- final cta ---------- */
+.finalcta{position:relative;text-align:center;padding:10rem 0;overflow:hidden;background:#050505;}
+.finalcta .glow{width:60vw;height:60vw;top:-10%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(22,119,255,.35),transparent 65%);}
+.finalcta h2{font-family:var(--disp);font-weight:700;font-size:clamp(2.6rem,8vw,6rem);line-height:1;position:relative;z-index:2;}
+.finalcta p{color:var(--muted);margin:1.4rem 0 2.6rem;position:relative;z-index:2;font-size:1.05rem;}
+.finalcta .btn{position:relative;z-index:2;}
+.finalcta .phone{display:block;margin-top:1.3rem;color:var(--faint);font-family:var(--disp);letter-spacing:.03em;position:relative;z-index:2;}
+
+/* ---------- page hero (sub pages) ---------- */
+.subhero{position:relative;min-height:74vh;display:flex;flex-direction:column;justify-content:center;padding-top:9rem;overflow:hidden;}
+.subhero h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1.02;letter-spacing:-.01em;}
+.subhero p{margin-top:1.4rem;max-width:520px;color:var(--muted);font-size:1.05rem;}
+.subhero .tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:2.2rem;}
+.subhero .tags span{font-size:.75rem;padding:.45rem .9rem;border:1px solid var(--line);border-radius:100px;color:var(--faint);}
+
+/* ---------- marketplace lookbook ---------- */
+.mp-panel{position:relative;min-height:78vh;display:flex;align-items:center;border-top:1px solid rgba(255,255,255,.07);overflow:hidden;cursor:pointer;}
+.mp-panel::before{content:'';position:absolute;inset:0;z-index:0;opacity:.85;transition:opacity .5s;}
+.mp-panel:hover::before{opacity:1;}
+.mp-panel .mp-glow{position:absolute;width:50%;height:80%;border-radius:50%;filter:blur(100px);opacity:.5;z-index:0;transition:transform .8s var(--ease);}
+.mp-panel:hover .mp-glow{transform:scale(1.25);}
+.mp-inner{position:relative;z-index:2;width:100%;padding:0 6vw;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.mp-title{font-family:var(--disp);font-weight:700;font-size:clamp(3rem,10vw,8rem);line-height:.9;letter-spacing:-.02em;transition:transform .6s var(--ease),letter-spacing .6s;}
+.mp-panel:hover .mp-title{transform:translateX(14px);letter-spacing:0em;}
+.mp-sub{font-family:var(--disp);font-size:.85rem;letter-spacing:.18em;color:var(--muted);margin-top:.8rem;text-transform:uppercase;}
+.mp-right{display:flex;align-items:center;gap:1.2rem;margin-bottom:.6rem;}
+.mp-idx{font-family:var(--disp);color:var(--faint);font-size:.85rem;}
+.mp-arrowbtn{width:64px;height:64px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:transform .5s var(--ease),background .4s;flex-shrink:0;}
+.mp-panel:hover .mp-arrowbtn{transform:rotate(45deg) scale(1.08);background:rgba(255,255,255,.1);}
+.mp-panel.amazon::before{background:radial-gradient(120% 90% at 80% 20%,rgba(255,153,51,.14),#050505 65%);}
+.mp-panel.amazon .mp-glow{background:#ff9933;right:5%;top:10%;}
+.mp-panel.myntra::before{background:radial-gradient(120% 90% at 20% 30%,rgba(255,32,110,.16),#0a0508 65%);}
+.mp-panel.myntra .mp-glow{background:#ff206e;left:8%;top:20%;}
+.mp-panel.flipkart::before{background:radial-gradient(120% 90% at 75% 60%,rgba(255,214,0,.12),#050914 65%);}
+.mp-panel.flipkart .mp-glow{background:#ffd600;right:10%;bottom:0;}
+.mp-panel.meesho::before{background:radial-gradient(120% 90% at 25% 70%,rgba(255,60,120,.14),#0a0508 65%);}
+.mp-panel.meesho .mp-glow{background:#ff3c78;left:10%;bottom:5%;}
+.mp-panel.blinkit::before{background:radial-gradient(120% 90% at 80% 30%,rgba(255,225,0,.16),#050805 65%);}
+.mp-panel.blinkit .mp-glow{background:#e2ff33;right:8%;top:15%;}
+
+/* ---------- popup / modal ---------- */
+.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(2,3,6,.7);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:5vw;opacity:0;pointer-events:none;transition:opacity .4s var(--ease);}
+.modal-overlay.open{opacity:1;pointer-events:auto;}
+.modal-card{width:min(560px,100%);border-radius:26px;padding:2.6rem;position:relative;background:linear-gradient(160deg,rgba(20,24,36,.9),rgba(8,10,16,.94));border:1px solid var(--line);box-shadow:0 40px 100px -20px rgba(0,0,0,.7);transform:scale(.95);transition:transform .45s var(--ease);max-height:86vh;overflow-y:auto;}
+.modal-overlay.open .modal-card{transform:scale(1);}
+.modal-card::before{content:'';position:absolute;inset:-1px;border-radius:26px;padding:1px;background:linear-gradient(120deg,var(--blue),transparent 40%,var(--violet));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
+.modal-close{position:absolute;top:1.3rem;right:1.3rem;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:transform .3s,background .3s;}
+.modal-close:hover{transform:rotate(90deg);background:rgba(255,255,255,.08);}
+.modal-eyebrow{font-family:var(--disp);font-size:.72rem;letter-spacing:.2em;color:var(--cyan);margin-bottom:.6rem;}
+.modal-card h3{font-family:var(--disp);font-size:2.2rem;font-weight:700;margin-bottom:1rem;}
+.modal-card p{color:var(--muted);font-size:.96rem;line-height:1.6;margin-bottom:1rem;}
+.modal-list{margin:1.4rem 0;display:flex;flex-direction:column;gap:.6rem;}
+.modal-list div{display:flex;gap:.7rem;align-items:flex-start;font-size:.92rem;color:var(--soft);}
+.modal-list div svg{flex-shrink:0;margin-top:.15rem;color:var(--cyan);}
+.modal-actions{display:flex;gap:.8rem;margin-top:1.8rem;flex-wrap:wrap;}
+
+/* ---------- digital growth chapters ---------- */
+.chapter{display:flex;align-items:center;gap:5vw;padding:7rem 0;flex-wrap:wrap;}
+.chapter:nth-child(even){flex-direction:row-reverse;}
+.chapter-visual{flex:1 1 420px;min-width:300px;}
+.chapter-text{flex:1 1 380px;min-width:280px;}
+.chapter-num{font-family:var(--disp);font-size:.8rem;color:var(--faint);letter-spacing:.2em;margin-bottom:1rem;}
+.chapter h3{font-family:var(--disp);font-weight:700;font-size:clamp(2.2rem,4.6vw,3.4rem);line-height:1.02;margin-bottom:1rem;}
+.chapter .service-name{font-family:var(--disp);color:var(--cyan);font-size:1rem;margin-bottom:.9rem;}
+.chapter p{color:var(--muted);max-width:42ch;}
+.browser-mock{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b1020;box-shadow:0 40px 80px -20px rgba(0,0,0,.6);transform:perspective(1000px) rotateY(-6deg) rotateX(2deg);transition:transform .6s var(--ease);}
+.browser-mock:hover{transform:perspective(1000px) rotateY(0) rotateX(0);}
+.browser-bar{display:flex;align-items:center;gap:.4rem;padding:.7rem .9rem;background:#12172a;border-bottom:1px solid rgba(255,255,255,.06);}
+.browser-bar span{width:9px;height:9px;border-radius:50%;background:#333;}
+.browser-body{padding:1.6rem;background:linear-gradient(160deg,#0d1226,#080b16);min-height:260px;}
+.browser-line{height:10px;border-radius:5px;background:rgba(255,255,255,.08);margin-bottom:.7rem;}
+.browser-line.w1{width:70%;}
+.browser-line.w2{width:45%;}
+.browser-line.w3{width:90%;}
+.browser-blocks{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.4rem;}
+.browser-blocks div{height:70px;border-radius:10px;background:linear-gradient(140deg,rgba(22,119,255,.28),rgba(108,77,255,.16));}
+
+.analytics-mock{display:flex;align-items:flex-end;gap:.7rem;height:220px;padding:1.6rem;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(108,77,255,.08),rgba(0,0,0,.2));}
+.analytics-mock div{flex:1;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--violet),var(--magenta));animation:barpulse 3.2s ease-in-out infinite;}
+@keyframes barpulse{0%,100%{opacity:.7;}50%{opacity:1;}}
+
+.network-mock{position:relative;height:280px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 50% 50%,rgba(22,119,255,.1),transparent 70%);}
+.network-mock .nnode{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan);animation:pulse 2.4s infinite;}
+
+/* ---------- taxation ---------- */
+.tax-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;margin-top:3rem;}
+.tax-card{border:1px solid var(--line);border-radius:20px;padding:2rem 1.6rem;background:linear-gradient(160deg,rgba(255,255,255,.035),rgba(255,255,255,.01));transition:transform .45s var(--ease),border-color .45s;}
+.tax-card:hover{transform:translateY(-6px);border-color:rgba(200,170,100,.4);}
+.tax-card .ic{width:44px;height:44px;border-radius:12px;background:linear-gradient(140deg,rgba(200,170,100,.25),rgba(22,119,255,.12));display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.tax-card h4{font-family:var(--disp);font-size:1.15rem;margin-bottom:.5rem;}
+.tax-card p{color:var(--muted);font-size:.88rem;}
+.doc-float{position:absolute;width:70px;height:90px;border-radius:8px;background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.02));border:1px solid rgba(200,170,100,.25);animation:drift 8s ease-in-out infinite;}
+
+/* ---------- about ---------- */
+.phil-word{padding:6rem 0;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+.phil-word h2{font-family:var(--disp);font-weight:700;font-size:clamp(3rem,12vw,9rem);letter-spacing:-.02em;line-height:1;}
+.phil-word p{color:var(--muted);max-width:46ch;margin:1.4rem auto 0;}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:flex-start;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+.glass-form{border-radius:26px;border:1px solid var(--line);background:rgba(255,255,255,.035);backdrop-filter:blur(20px);padding:2.4rem;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);}
+.field{margin-bottom:1.3rem;}
+.field label{display:block;font-size:.78rem;color:var(--faint);margin-bottom:.5rem;letter-spacing:.03em;}
+.field input,.field select,.field textarea{width:100%;padding:.85rem 1rem;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.02);color:var(--white);font-family:var(--body);font-size:.94rem;transition:border-color .3s,background .3s;}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--cyan);background:rgba(0,217,255,.04);}
+.field select option{background:#0a0d16;}
+.field textarea{resize:vertical;min-height:100px;}
+.contact-side .cs-item{display:flex;gap:1rem;align-items:flex-start;padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,.07);}
+.contact-side .cs-ic{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,rgba(22,119,255,.25),rgba(0,217,255,.12));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.contact-side b{font-family:var(--disp);display:block;margin-bottom:.2rem;}
+.contact-side span{color:var(--muted);font-size:.9rem;}
+
+.wa-band{position:relative;border-radius:30px;overflow:hidden;padding:4rem 3rem;text-align:center;margin-top:2rem;background:linear-gradient(140deg,#062018,#04150c);border:1px solid rgba(18,201,107,.3);}
+.wa-band h3{font-family:var(--disp);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;margin-bottom:.6rem;}
+.wa-band .num{margin-top:1rem;color:var(--faint);font-family:var(--disp);letter-spacing:.04em;}
+
+/* ---------- footer ---------- */
+footer{background:#030304;border-top:1px solid rgba(255,255,255,.07);padding:4rem 0 2rem;}
+.foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.foot-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}
+.foot-logo img{height:26px;}
+.foot-logo span{font-family:var(--disp);font-weight:700;}
+footer .fcol h5{font-family:var(--disp);font-size:.78rem;letter-spacing:.15em;color:var(--faint);margin-bottom:1rem;text-transform:uppercase;}
+footer .fcol a{display:block;color:var(--muted);font-size:.88rem;padding:.3rem 0;transition:color .3s;}
+footer .fcol a:hover{color:var(--cyan);}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:1.6rem;font-size:.78rem;color:var(--faint);}
+
+/* ---------- floating whatsapp ---------- */
+#fab-wa{position:fixed;right:22px;bottom:22px;z-index:700;display:flex;align-items:center;gap:.6rem;padding:.85rem 1.2rem;border-radius:100px;background:linear-gradient(100deg,#16d977,#0ea856);color:#04150c;font-family:var(--disp);font-weight:700;font-size:.85rem;box-shadow:0 14px 40px -10px rgba(18,201,107,.65);transition:transform .4s var(--ease);}
+#fab-wa:hover{transform:translateY(-3px) scale(1.03);}
+@media(max-width:640px){#fab-wa span.fab-text{display:none;}#fab-wa{padding:1rem;}}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
+  .section{padding:6rem 0;}
+  .chapter{flex-direction:column !important;gap:2.4rem;}
+  .eco-node button{font-size:.68rem;padding:.45rem .75rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav id="nav">
+  <a href="#" class="nav-logo" data-nav="home">
+    <img src="data:image/png;base64,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" alt="Desiretech">
+    <span>DESIRETECH</span>
+  </a>
+  <div class="nav-links">
+    <a data-nav="home" class="active">Home</a>
+    <a data-nav="marketplace">Marketplace</a>
+    <a data-nav="digital">Digital Growth</a>
+    <a data-nav="taxation">Taxation</a>
+    <a data-nav="about">About</a>
+    <a data-nav="contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-wa" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener">
+      WhatsApp <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+
+<div id="mobile-menu">
+  <a data-nav="home">Home</a>
+  <a data-nav="marketplace">Marketplace</a>
+  <a data-nav="digital">Digital Growth</a>
+  <a data-nav="taxation">Taxation</a>
+  <a data-nav="about">About</a>
+  <a data-nav="contact">Contact</a>
+  <div class="mm-foot">
+    <a class="btn btn-wa" href="https://wa.me/918310747603" target="_blank" rel="noopener">Chat on WhatsApp →</a>
+  </div>
+</div>
+
+<!-- floating whatsapp -->
+<a id="fab-wa" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27d%20like%20to%20know%20more." target="_blank" rel="noopener">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2.05 22l5.36-1.4a9.9 9.9 0 004.63 1.18h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.02c-.24.68-1.4 1.3-1.93 1.37-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36l.56.01c.18 0 .42-.07.65.5.24.58.82 2.01.89 2.16.07.15.12.32.02.5-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12.99 2.06 1.3 2.36 1.45.29.14.46.12.63-.07.17-.19.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.68.79 1.97.94.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg>
+  <span class="fab-text">WhatsApp</span>
+</a>
+
+<!-- ================= HOME ================= -->
+<div class="page active" id="page-home">
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="particle" style="width:5px;height:5px;left:14%;top:30%;"></div>
+  <div class="particle" style="width:3px;height:3px;left:38%;top:65%;animation-delay:-2s;"></div>
+  <div class="particle" style="width:4px;height:4px;left:62%;top:22%;animation-delay:-4s;"></div>
+  <div class="particle" style="width:3px;height:3px;left:80%;top:60%;animation-delay:-1s;"></div>
+  <div class="particle" style="width:6px;height:6px;left:22%;top:78%;animation-delay:-3s;"></div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="float-card" style="--rot:-4deg;top:6%;left:4%;width:220px;">
+      <div class="eyebrow" style="color:var(--cyan);">MYNTRA · LIVE</div>
+      <div style="font-family:var(--disp);font-size:1.6rem;font-weight:700;margin-top:.4rem;">+38%</div>
+      <div style="font-size:.72rem;color:var(--muted);">Catalog visibility</div>
+    </div>
+    <div class="float-card" style="--rot:3deg;top:34%;left:44%;width:190px;animation-delay:-3s;">
+      <div class="eyebrow" style="color:var(--violet);">AMAZON</div>
+      <div style="display:flex;gap:.3rem;margin-top:.6rem;">
+        <div style="flex:1;height:34px;border-radius:6px;background:linear-gradient(180deg,rgba(22,119,255,.5),rgba(22,119,255,.05));"></div>
+        <div style="flex:1;height:50px;border-radius:6px;background:linear-gradient(180deg,rgba(0,217,255,.5),rgba(0,217,255,.05));align-self:flex-end;"></div>
+        <div style="flex:1;height:24px;border-radius:6px;background:linear-gradient(180deg,rgba(108,77,255,.5),rgba(108,77,255,.05));align-self:flex-end;"></div>
+      </div>
+    </div>
+    <div class="float-card" style="--rot:-2deg;top:64%;left:8%;width:210px;animation-delay:-5s;">
+      <div class="eyebrow" style="color:#ff9933;">BLINKIT</div>
+      <div style="font-size:.82rem;color:var(--soft);margin-top:.5rem;">Onboarding in progress</div>
+      <div style="height:4px;border-radius:4px;background:rgba(255,255,255,.1);margin-top:.6rem;overflow:hidden;"><div style="width:70%;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));"></div></div>
+    </div>
+    <div class="float-card" style="--rot:5deg;top:2%;left:56%;width:150px;animation-delay:-1.5s;">
+      <div style="font-family:var(--disp);font-size:2rem;">🛍️</div>
+    </div>
+  </div>
+
+  <div class="hero-inner wrap">
+    <div class="hero-badge"><span class="dot-live"></span> Now onboarding brands across 5 marketplaces</div>
+    <h1>
+      <span class="line"><span>TURN YOUR DESIRE</span></span>
+      <span class="line"><span class="grad-text">INTO DIGITAL GROWTH.</span></span>
+    </h1>
+    <p class="hero-sub">Marketplace. Technology. Marketing. Growth. Desiretech takes Indian brands from idea to shelf — on Amazon, Myntra, Flipkart, Meesho and Blinkit, and beyond.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27d%20like%20to%20start%20my%20journey." target="_blank" rel="noopener">START YOUR JOURNEY <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn-ghost" href="#explore" data-scrollto="explore">EXPLORE SERVICES ↓</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="sline"></div> SCROLL</div>
+</section>
+
+<!-- brand story -->
+<section class="section section-dark">
+  <div class="glow" style="width:44vw;height:44vw;left:-10%;top:10%;background:radial-gradient(circle,rgba(108,77,255,.22),transparent 65%);"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">Where it begins</span></div>
+    <h2 class="story-head reveal">EVERY BUSINESS<br>STARTS WITH <span class="grad-text">A DESIRE.</span></h2>
+    <div class="story-list">
+      <div class="reveal">An idea.</div>
+      <div class="reveal">A product.</div>
+      <div class="reveal">A dream.</div>
+    </div>
+    <h2 class="story-head reveal">SOMETHING WORTH <span class="grad-text-2">BUILDING.</span></h2>
+  </div>
+</section>
+
+<!-- challenge -->
+<section class="section section-navy" id="explore">
+  <div class="glow" style="width:50vw;height:50vw;right:-15%;top:0;background:radial-gradient(circle,rgba(0,217,255,.14),transparent 65%);"></div>
+  <div class="wrap" style="position:relative;z-index:2;text-align:center;">
+    <div class="reveal" style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 1.8rem;margin-bottom:3rem;opacity:.75;">
+      <span class="eyebrow" style="color:var(--faint);">MARKETPLACE</span>
+      <span class="eyebrow" style="color:var(--faint);">ONBOARDING</span>
+      <span class="eyebrow" style="color:var(--faint);">CATALOG</span>
+      <span class="eyebrow" style="color:var(--faint);">MARKETING</span>
+      <span class="eyebrow" style="color:var(--faint);">WEBSITE</span>
+      <span class="eyebrow" style="color:var(--faint);">CUSTOMERS</span>
+      <span class="eyebrow" style="color:var(--faint);">TAXATION</span>
+    </div>
+    <h2 class="story-head reveal" style="font-size:clamp(1.9rem,5vw,3.6rem);">GROWING ONLINE<br>ISN'T SIMPLE.</h2>
+    <h2 class="story-head reveal grad-text" style="font-size:clamp(1.9rem,5vw,3.6rem);margin-top:.4rem;">THAT'S WHERE WE COME IN.</h2>
+  </div>
+</section>
+
+<!-- ecosystem -->
+<section class="section section-dark">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="kicker reveal" style="justify-content:center;"><span class="eyebrow" style="text-align:center;">The Desiretech ecosystem</span></div>
+    <h2 class="story-head reveal" style="text-align:center;font-size:clamp(1.9rem,4.4vw,3.2rem);">ONE PARTNER. EVERY CHANNEL.</h2>
+    <div class="eco-wrap reveal-scale">
+      <div class="eco-ring"></div>
+      <div class="eco-ring r2"></div>
+      <svg class="eco-svg" viewBox="0 0 680 680"><g id="eco-lines"></g></svg>
+      <div class="eco-center"><img src="data:image/png;base64,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" alt="Desiretech"></div>
+      <div class="eco-node" id="eco-n0" data-desc="Full account management on India's largest marketplace."><button><span class="nd"></span>Amazon</button></div>
+      <div class="eco-node" id="eco-n1" data-desc="Onboarding + account management for fashion brands."><button><span class="nd"></span>Myntra</button></div>
+      <div class="eco-node" id="eco-n2" data-desc="Account management across India's trusted commerce platform."><button><span class="nd"></span>Flipkart</button></div>
+      <div class="eco-node" id="eco-n3" data-desc="Account management for the reseller-first marketplace."><button><span class="nd"></span>Meesho</button></div>
+      <div class="eco-node" id="eco-n4" data-desc="Fast onboarding for quick-commerce shelf space."><button><span class="nd"></span>Blinkit</button></div>
+      <div class="eco-node" id="eco-n5" data-desc="Premium, conversion-focused websites."><button><span class="nd"></span>Website</button></div>
+      <div class="eco-node" id="eco-n6" data-desc="Performance marketing that builds attention into demand."><button><span class="nd"></span>Marketing</button></div>
+      <div class="eco-node" id="eco-n7" data-desc="Brand partnerships that open new growth channels."><button><span class="nd"></span>Collabs</button></div>
+      <div class="eco-node" id="eco-n8" data-desc="GST, taxation and compliance handled end-to-end."><button><span class="nd"></span>Taxation</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- services horizontal -->
+<section class="section section-navy" style="padding-left:0;padding-right:0;">
+  <div class="wrap" style="margin-bottom:2rem;">
+    <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">What we do</span></div>
+    <h2 class="story-head reveal" style="font-size:clamp(1.9rem,4.4vw,3.2rem);">THREE WAYS WE GROW YOU.</h2>
+  </div>
+  <div class="hscroll reveal">
+    <div class="hpanel p1" onclick="go('marketplace')">
+      <div class="hp-tag">01 — REACH</div>
+      <h3>Marketplace</h3>
+      <p>Amazon, Myntra, Flipkart, Meesho, Blinkit — account management and onboarding, done right.</p>
+      <div class="hpanel-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2"/></svg></div>
+    </div>
+    <div class="hpanel p2" onclick="go('digital')">
+      <div class="hp-tag">02 — VISIBILITY</div>
+      <h3>Digital Growth</h3>
+      <p>Websites, digital marketing and brand collaborations built for attention and conversion.</p>
+      <div class="hpanel-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2"/></svg></div>
+    </div>
+    <div class="hpanel p3" onclick="go('taxation')">
+      <div class="hp-tag">03 — FOUNDATION</div>
+      <h3>Business Support</h3>
+      <p>GST, taxation and compliance — the operational backbone behind every growing business.</p>
+      <div class="hpanel-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- emotional -->
+<section class="section section-dark emo">
+  <div class="glow" style="width:50vw;height:50vw;left:50%;top:20%;transform:translateX(-50%);background:radial-gradient(circle,rgba(22,119,255,.16),transparent 65%);"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <h2 class="reveal">IT'S NOT<br><span class="grad-text">JUST A PRODUCT.</span></h2>
+    <div class="emo-words reveal">
+      <span>It's your time.</span><span>Your investment.</span><span>Your risk.</span><span>Your ambition.</span><span>Your future.</span>
+    </div>
+    <h2 class="reveal" style="font-size:clamp(1.8rem,4.6vw,3.4rem);">WE UNDERSTAND.</h2>
+  </div>
+</section>
+
+<!-- growth journey -->
+<section class="section section-navy" style="text-align:center;">
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="kicker reveal" style="justify-content:center;"><span class="eyebrow">The path forward</span></div>
+    <h2 class="story-head reveal">NOW LET'S BUILD<br>WHAT COMES NEXT.</h2>
+    <div class="journey reveal" style="text-align:left;">
+      <div class="jstep"><div class="jl"></div><b>Build</b></div>
+      <div class="jstep"><div class="jl"></div><b>Launch</b></div>
+      <div class="jstep"><div class="jl"></div><b>Sell</b></div>
+      <div class="jstep"><div class="jl"></div><b>Grow</b></div>
+      <div class="jstep"><div class="jl"></div><b>Scale</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- final cta -->
+<section class="finalcta">
+  <div class="glow"></div>
+  <div class="glow" style="width:34vw;height:34vw;right:-8%;bottom:-10%;background:radial-gradient(circle,rgba(0,217,255,.22),transparent 65%);"></div>
+  <div class="wrap">
+    <h2 class="reveal">READY TO <span class="grad-text">GROW?</span></h2>
+    <p class="reveal">Your next chapter starts here.</p>
+    <a class="btn btn-wa reveal" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27m%20ready%20to%20grow%20my%20business." target="_blank" rel="noopener">WHATSAPP DESIRETECH →</a>
+    <span class="phone reveal">+91 83107 47603</span>
+  </div>
+</section>
+
+</div><!-- /page-home -->
+
+<!-- ================= MARKETPLACE ================= -->
+<div class="page" id="page-marketplace">
+  <section class="subhero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="wrap" style="position:relative;z-index:2;">
+      <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">Marketplace services</span></div>
+      <h1 class="reveal">YOUR BUSINESS<br><span class="grad-text">DESERVES TO BE SEEN.</span></h1>
+      <p class="reveal">Get where your customers are already shopping.</p>
+      <div class="tags reveal"><span>Account Management</span><span>Onboarding</span><span>Catalog Ops</span><span>Brand Collaborations</span></div>
+    </div>
+  </section>
+
+  <div class="mp-panel amazon" data-modal="amazon">
+    <div class="mp-glow"></div>
+    <div class="mp-inner">
+      <div>
+        <div class="mp-title reveal">AMAZON</div>
+        <div class="mp-sub reveal">Account Management</div>
+      </div>
+      <div class="mp-right"><span class="mp-idx">01 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+    </div>
+  </div>
+  <div class="mp-panel myntra" data-modal="myntra">
+    <div class="mp-glow"></div>
+    <div class="mp-inner">
+      <div>
+        <div class="mp-title reveal">MYNTRA</div>
+        <div class="mp-sub reveal">Account Management + Onboarding</div>
+      </div>
+      <div class="mp-right"><span class="mp-idx">02 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+    </div>
+  </div>
+  <div class="mp-panel flipkart" data-modal="flipkart">
+    <div class="mp-glow"></div>
+    <div class="mp-inner">
+      <div>
+        <div class="mp-title reveal">FLIPKART</div>
+        <div class="mp-sub reveal">Account Management</div>
+      </div>
+      <div class="mp-right"><span class="mp-idx">03 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+    </div>
+  </div>
+  <div class="mp-panel meesho" data-modal="meesho">
+    <div class="mp-glow"></div>
+    <div class="mp-inner">
+      <div>
+        <div class="mp-title reveal">MEESHO</div>
+        <div class="mp-sub reveal">Account Management</div>
+      </div>
+      <div class="mp-right"><span class="mp-idx">04 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+    </div>
+  </div>
+  <div class="mp-panel blinkit" data-modal="blinkit">
+    <div class="mp-glow"></div>
+    <div class="mp-inner">
+      <div>
+        <div class="mp-title reveal">BLINKIT</div>
+        <div class="mp-sub reveal">Onboarding</div>
+      </div>
+      <div class="mp-right"><span class="mp-idx">05 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+    </div>
+  </div>
+
+  <section class="finalcta">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2 class="reveal" style="font-size:clamp(2rem,5.6vw,3.6rem);">NOT SURE WHERE <span class="grad-text">TO START?</span></h2>
+      <p class="reveal">Tell us your product — we'll tell you the right marketplace.</p>
+      <a class="btn btn-primary reveal" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%20need%20help%20choosing%20a%20marketplace." target="_blank" rel="noopener">TALK TO DESIRETECH <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></a>
+    </div>
+  </section>
+</div>
+
+<!-- ================= DIGITAL GROWTH ================= -->
+<div class="page" id="page-digital">
+  <section class="subhero">
+    <div class="hero-bg" style="background:radial-gradient(60% 50% at 30% 30%,rgba(108,77,255,.35),transparent 60%),radial-gradient(50% 45% at 80% 70%,rgba(192,38,255,.2),transparent 60%),linear-gradient(180deg,#0b0714,#1a0e33);"></div>
+    <div class="wrap" style="position:relative;z-index:2;">
+      <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">Digital growth</span></div>
+      <h1 class="reveal">BUILD. BE SEEN.<br><span class="grad-text-2">GROW.</span></h1>
+      <p class="reveal">Websites, marketing and brand partnerships built to convert attention into customers.</p>
+    </div>
+  </section>
+
+  <section class="section section-violet">
+    <div class="wrap">
+      <div class="chapter reveal">
+        <div class="chapter-visual">
+          <div class="browser-mock">
+            <div class="browser-bar"><span></span><span></span><span></span></div>
+            <div class="browser-body">
+              <div class="browser-line w1"></div><div class="browser-line w2"></div><div class="browser-line w3"></div>
+              <div class="browser-blocks"><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">CHAPTER 01</div>
+          <h3>YOUR DIGITAL HOME.</h3>
+          <div class="service-name">Website Development</div>
+          <p>A fast, premium website that represents your brand the way it deserves — built to convert visitors into enquiries.</p>
+        </div>
+      </div>
+
+      <div class="chapter reveal">
+        <div class="chapter-visual">
+          <div class="analytics-mock">
+            <div style="height:40%;"></div><div style="height:70%;"></div><div style="height:55%;"></div><div style="height:90%;"></div><div style="height:60%;"></div><div style="height:80%;"></div>
+          </div>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">CHAPTER 02</div>
+          <h3>BE SEEN.</h3>
+          <div class="service-name">Digital Marketing</div>
+          <p>Attention is the beginning. Growth is the goal. We build campaigns that turn visibility into demand.</p>
+        </div>
+      </div>
+
+      <div class="chapter reveal">
+        <div class="chapter-visual">
+          <div class="network-mock">
+            <div class="nnode" style="left:20%;top:30%;"></div>
+            <div class="nnode" style="left:55%;top:20%;animation-delay:-1s;"></div>
+            <div class="nnode" style="left:75%;top:60%;animation-delay:-2s;"></div>
+            <div class="nnode" style="left:35%;top:70%;animation-delay:-.5s;"></div>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;"><line x1="20%" y1="30%" x2="55%" y2="20%" stroke="rgba(0,217,255,.3)"/><line x1="55%" y1="20%" x2="75%" y2="60%" stroke="rgba(0,217,255,.3)"/><line x1="75%" y1="60%" x2="35%" y2="70%" stroke="rgba(0,217,255,.3)"/><line x1="35%" y1="70%" x2="20%" y2="30%" stroke="rgba(0,217,255,.3)"/></svg>
+          </div>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">CHAPTER 03</div>
+          <h3>GO FURTHER.</h3>
+          <div class="service-name">Brand Collaborations</div>
+          <p>Create opportunities beyond the next sale — partnerships that open new channels for growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finalcta">
+    <div class="glow" style="background:radial-gradient(circle,rgba(108,77,255,.32),transparent 65%);"></div>
+    <div class="wrap">
+      <h2 class="reveal" style="font-size:clamp(2rem,5.6vw,3.6rem);">WHAT ARE YOU <span class="grad-text-2">BUILDING NEXT?</span></h2>
+      <a class="btn btn-primary reveal" style="margin-top:1.6rem;" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20let%27s%20talk%20about%20my%20digital%20growth." target="_blank" rel="noopener">TALK TO DESIRETECH <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></a>
+    </div>
+  </section>
+</div>
+
+<!-- ================= TAXATION ================= -->
+<div class="page" id="page-taxation">
+  <section class="subhero">
+    <div class="hero-bg" style="background:radial-gradient(55% 45% at 25% 25%,rgba(22,119,255,.24),transparent 60%),radial-gradient(45% 40% at 80% 70%,rgba(200,170,100,.14),transparent 60%),linear-gradient(180deg,#050a14,#07111F);"></div>
+    <div class="doc-float" style="top:22%;right:14%;--rot:6deg;"></div>
+    <div class="doc-float" style="top:48%;right:24%;--rot:-4deg;animation-delay:-3s;"></div>
+    <div class="wrap" style="position:relative;z-index:2;">
+      <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">Business support</span></div>
+      <h1 class="reveal">GROWTH NEEDS<br><span class="grad-text">A STRONG FOUNDATION.</span></h1>
+      <p class="reveal">GST, taxation and compliance — handled with care, so you can focus on selling.</p>
+    </div>
+  </section>
+
+  <section class="section section-navy">
+    <div class="wrap">
+      <div class="tax-grid">
+        <div class="tax-card reveal"><div class="ic">📋</div><h4>GST Registration</h4><p>End-to-end GST setup for your business, done right the first time.</p></div>
+        <div class="tax-card reveal"><div class="ic">🧾</div><h4>Taxation</h4><p>Structured, timely tax support so nothing slips through the cracks.</p></div>
+        <div class="tax-card reveal"><div class="ic">✅</div><h4>Compliance</h4><p>Stay aligned with marketplace and regulatory requirements as you scale.</p></div>
+        <div class="tax-card reveal"><div class="ic">📁</div><h4>Documentation</h4><p>Clean, organised documentation ready whenever you need it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finalcta">
+    <div class="glow" style="background:radial-gradient(circle,rgba(200,170,100,.14),transparent 65%);"></div>
+    <div class="wrap">
+      <h2 class="reveal" style="font-size:clamp(1.9rem,5vw,3.2rem);">LET'S GET YOUR <span class="grad-text">FOUNDATION RIGHT.</span></h2>
+      <a class="btn btn-primary reveal" style="margin-top:1.6rem;" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27d%20like%20to%20discuss%20GST%2Ftaxation%20support." target="_blank" rel="noopener">DISCUSS YOUR REQUIREMENTS <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></a>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div class="page" id="page-about">
+  <section class="subhero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="wrap" style="position:relative;z-index:2;">
+      <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">About Desiretech</span></div>
+      <h1 class="reveal">EVERY BIG BUSINESS<br><span class="grad-text">STARTED SMALL.</span></h1>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="wrap">
+      <div class="story-list">
+        <div class="reveal">An idea.</div>
+        <div class="reveal">A product.</div>
+        <div class="reveal">A first customer.</div>
+        <div class="reveal">A first marketplace.</div>
+        <div class="reveal">A growing brand.</div>
+      </div>
+      <h2 class="story-head reveal" style="margin-top:2.4rem;">DESIRETECH EXISTS<br><span class="grad-text">FOR WHAT COMES NEXT.</span></h2>
+      <p class="reveal" style="max-width:56ch;color:var(--muted);margin-top:1.6rem;font-size:1.05rem;">We help Indian businesses move from ambition to execution — across marketplaces, on the web, and behind the scenes with the operations that keep it all compliant. No shortcuts. No guarantees we can't back. Just steady, hands-on work toward your next stage of growth.</p>
+    </div>
+  </section>
+
+  <div class="phil-word section-navy">
+    <div class="wrap"><h2 class="reveal grad-text">DESIRE</h2><p class="reveal">Every engagement starts with what you're trying to build — your product, your customer, your ambition.</p></div>
+  </div>
+  <div class="phil-word section-dark">
+    <div class="wrap"><h2 class="reveal grad-text-2">BUILD</h2><p class="reveal">Catalogs, storefronts, campaigns and compliance — the unglamorous work done properly.</p></div>
+  </div>
+  <div class="phil-word section-navy">
+    <div class="wrap"><h2 class="reveal" style="background:linear-gradient(100deg,var(--cyan),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;">GROW</h2><p class="reveal">From first listing to scaled operation — we stay with you as the business evolves.</p></div>
+  </div>
+
+  <section class="finalcta">
+    <div class="glow"></div>
+    <div class="wrap">
+      <h2 class="reveal" style="font-size:clamp(2rem,5.6vw,3.6rem);">LET'S BUILD <span class="grad-text">TOGETHER.</span></h2>
+      <a class="btn btn-primary reveal" style="margin-top:1.6rem;" href="https://wa.me/918310747603" target="_blank" rel="noopener">WHATSAPP DESIRETECH <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></a>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CONTACT ================= -->
+<div class="page" id="page-contact">
+  <section class="subhero" style="min-height:50vh;">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="wrap" style="position:relative;z-index:2;">
+      <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">Get in touch</span></div>
+      <h1 class="reveal">LET'S TALK<br><span class="grad-text">ABOUT YOUR BUSINESS.</span></h1>
+    </div>
+  </section>
+
+  <section class="section section-dark" style="padding-top:2rem;">
+    <div class="wrap">
+      <div class="contact-grid">
+        <form class="glass-form reveal" id="enquiry-form">
+          <div class="field"><label>Name</label><input type="text" required placeholder="Your name"></div>
+          <div class="field"><label>Business Name</label><input type="text" placeholder="Your business"></div>
+          <div class="field"><label>Phone</label><input type="tel" required placeholder="+91"></div>
+          <div class="field"><label>Email</label><input type="email" placeholder="you@business.com"></div>
+          <div class="field"><label>Service Required</label>
+            <select>
+              <option>Marketplace — Amazon</option>
+              <option>Marketplace — Myntra</option>
+              <option>Marketplace — Flipkart</option>
+              <option>Marketplace — Meesho</option>
+              <option>Marketplace — Blinkit</option>
+              <option>Website Development</option>
+              <option>Digital Marketing</option>
+              <option>Taxation / GST</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field"><label>Message</label><textarea placeholder="Tell us a bit about your business..."></textarea></div>
+          <button type="submit" class="btn btn-primary btn-block">START THE CONVERSATION <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+        </form>
+
+        <div class="contact-side reveal">
+          <div class="cs-item"><div class="cs-ic">💬</div><div><b>WhatsApp</b><span>+91 83107 47603</span></div></div>
+          <div class="cs-item"><div class="cs-ic">✉️</div><div><b>Email</b><span>desiretech51@gmail.com</span></div></div>
+          <div class="cs-item"><div class="cs-ic">🌐</div><div><b>Website</b><span>desire2tech.in</span></div></div>
+          <div class="cs-item"><div class="cs-ic">📍</div><div><b>Services</b><span>Marketplace · Digital · Taxation</span></div></div>
+
+          <div class="wa-band">
+            <div class="eyebrow" style="color:#16d977;">PREFER WHATSAPP?</div>
+            <h3 style="margin-top:.6rem;">CHAT WITH DESIRETECH</h3>
+            <a class="btn btn-wa" style="margin-top:1.2rem;" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27d%20like%20to%20get%20in%20touch." target="_blank" rel="noopener">CHAT ON WHATSAPP →</a>
+            <span class="num">+91 83107 47603</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal-eyebrow" id="modal-eyebrow">MARKETPLACE</div>
+    <h3 id="modal-title">Amazon</h3>
+    <p id="modal-desc">Full account management on India's largest marketplace.</p>
+    <div class="modal-list" id="modal-list"></div>
+    <div class="modal-actions">
+      <a class="btn btn-wa" id="modal-wa" href="#" target="_blank" rel="noopener">WHATSAPP US →</a>
+      <button class="btn btn-ghost" id="modal-close2">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div style="flex:1 1 260px;">
+        <div class="foot-logo"><img src="data:image/png;base64,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" alt="Desiretech"><span>DESIRETECH</span></div>
+        <p style="color:var(--muted);font-size:.9rem;max-width:34ch;">Marketplace management, digital growth and business support for Indian brands.</p>
+      </div>
+      <div class="fcol">
+        <h5>Navigate</h5>
+        <a data-nav="home">Home</a><a data-nav="marketplace">Marketplace</a><a data-nav="digital">Digital Growth</a><a data-nav="taxation">Taxation</a><a data-nav="about">About</a><a data-nav="contact">Contact</a>
+      </div>
+      <div class="fcol">
+        <h5>Contact</h5>
+        <a href="https://wa.me/918310747603" target="_blank" rel="noopener">+91 83107 47603</a>
+        <a href="mailto:desiretech51@gmail.com">desiretech51@gmail.com</a>
+        <a href="#">desire2tech.in</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Desiretech Seller Services. All rights reserved.</span>
+      <span>Built for growth.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- page routing ---------- */
+function go(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active', a.dataset.nav===name));
+  window.scrollTo({top:0,behavior:'instant' in window ? 'instant':'auto'});
+  closeMobileMenu();
+  initReveal();
+}
+document.querySelectorAll('[data-nav]').forEach(el=>{
+  el.addEventListener('click', e=>{ e.preventDefault(); go(el.dataset.nav); });
+});
+document.querySelectorAll('[data-scrollto]').forEach(el=>{
+  el.addEventListener('click', e=>{
+    e.preventDefault();
+    document.getElementById(el.dataset.scrollto).scrollIntoView({behavior:'smooth'});
+  });
+});
+
+/* ---------- nav shrink ---------- */
+const navEl = document.getElementById('nav');
+window.addEventListener('scroll', ()=>{
+  navEl.classList.toggle('shrink', window.scrollY > 40);
+});
+
+/* ---------- mobile menu ---------- */
+const burger = document.getElementById('burger');
+const mmenu = document.getElementById('mobile-menu');
+function closeMobileMenu(){ burger.classList.remove('open'); mmenu.classList.remove('open'); document.body.style.overflow=''; }
+burger.addEventListener('click', ()=>{
+  const opening = !mmenu.classList.contains('open');
+  burger.classList.toggle('open');
+  mmenu.classList.toggle('open');
+  document.body.style.overflow = opening ? 'hidden':'';
+});
+
+/* ---------- scroll reveal ---------- */
+let io;
+function initReveal(){
+  if(io) io.disconnect();
+  const targets = document.querySelectorAll('.page.active .reveal, .page.active .reveal-scale');
+  io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+  targets.forEach(t=>io.observe(t));
+}
+initReveal();
+
+/* ---------- hero mouse parallax ---------- */
+const heroVis = document.querySelector('.hero-visual');
+if(window.matchMedia('(pointer:fine)').matches && heroVis){
+  document.querySelector('.hero').addEventListener('mousemove', (e)=>{
+    const x = (e.clientX/window.innerWidth - .5) * 18;
+    const y = (e.clientY/window.innerHeight - .5) * 18;
+    heroVis.style.transform = `translate(${x}px, ${y}px)`;
+  });
+}
+
+/* ---------- ecosystem node placement ---------- */
+(function(){
+  const nodes = document.querySelectorAll('.eco-node');
+  const n = nodes.length;
+  const R = 46; // percent radius
+  const lines = document.getElementById('eco-lines');
+  nodes.forEach((node,i)=>{
+    const angle = (i/n) * Math.PI*2 - Math.PI/2;
+    const x = 50 + R*Math.cos(angle);
+    const y = 50 + R*Math.sin(angle);
+    node.style.left = x+'%';
+    node.style.top = y+'%';
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1','50%'); line.setAttribute('y1','50%');
+    line.setAttribute('x2', x+'%'); line.setAttribute('y2', y+'%');
+    lines.appendChild(line);
+    node.querySelector('button').addEventListener('click', ()=> openEcoModal(node));
+  });
+})();
+function openEcoModal(node){
+  const title = node.querySelector('button').textContent.trim();
+  const desc = node.dataset.desc;
+  document.getElementById('modal-eyebrow').textContent = 'DESIRETECH';
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-desc').textContent = desc;
+  document.getElementById('modal-list').innerHTML = '';
+  document.getElementById('modal-wa').href = `https://wa.me/918310747603?text=${encodeURIComponent('Hi Desiretech, I want to know more about '+title+'.')}`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+/* ---------- marketplace modal ---------- */
+const marketplaceData = {
+  amazon:{ title:'Amazon', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Full-service management of your Amazon account — built for consistent visibility and operational hygiene.",
+    list:['Catalog setup & optimisation','Listing quality & content management','Account health monitoring','Order & inventory coordination']},
+  myntra:{ title:'Myntra', tag:'MARKETPLACE — ONBOARDING + ACCOUNT MANAGEMENT', desc:"From first onboarding to ongoing account management, we help fashion brands get discovered on Myntra.",
+    list:['End-to-end seller onboarding','SKU & catalog template management','Account management post-launch','Compliance with platform guidelines']},
+  flipkart:{ title:'Flipkart', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Structured account management across one of India's most trusted commerce platforms.",
+    list:['Listing & catalog management','Account health & performance tracking','Order & return coordination','Ongoing optimisation']},
+  meesho:{ title:'Meesho', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Account management tuned for Meesho's reseller-driven, value-focused marketplace.",
+    list:['Catalog & pricing management','Account health monitoring','Order coordination','Ongoing support']},
+  blinkit:{ title:'Blinkit', tag:'QUICK COMMERCE — ONBOARDING', desc:"Fast, guided onboarding to get your products live on Blinkit's quick-commerce shelf.",
+    list:['Seller registration & setup','Catalog & inventory onboarding','Platform compliance guidance','Go-live support']}
+};
+document.querySelectorAll('.mp-panel').forEach(panel=>{
+  panel.addEventListener('click', ()=>{
+    const key = panel.dataset.modal;
+    const d = marketplaceData[key];
+    document.getElementById('modal-eyebrow').textContent = d.tag;
+    document.getElementById('modal-title').textContent = d.title;
+    document.getElementById('modal-desc').textContent = d.desc;
+    document.getElementById('modal-list').innerHTML = d.list.map(i=>`<div><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>${i}</div>`).join('');
+    document.getElementById('modal-wa').href = `https://wa.me/918310747603?text=${encodeURIComponent('Hi Desiretech, I want to know more about '+d.title+' '+d.tag.split('—')[1]+'.')}`;
+    document.getElementById('modal-overlay').classList.add('open');
+  });
+});
+function closeModal(){ document.getElementById('modal-overlay').classList.remove('open'); }
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-close2').addEventListener('click', closeModal);
+document.getElementById('modal-overlay').addEventListener('click', (e)=>{ if(e.target.id==='modal-overlay') closeModal(); });
+
+/* ---------- contact form (demo) ---------- */
+document.getElementById('enquiry-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const btn = this.querySelector('button[type=submit]');
+  const original = btn.innerHTML;
+  btn.innerHTML = 'SENDING…';
+  setTimeout(()=>{
+    const fd = new FormData(this);
+    const name = this.querySelector('input[type=text]').value || 'there';
+    window.open(`https://wa.me/918310747603?text=${encodeURIComponent('Hi Desiretech, this is '+name+'. I just submitted an enquiry on your website.')}`, '_blank');
+    btn.innerHTML = 'SENT — CHECK WHATSAPP ✓';
+    setTimeout(()=>{ btn.innerHTML = original; }, 3000);
+  }, 700);
+});
+</script>
+</body>
+</html>
