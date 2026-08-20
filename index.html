@@ -130,7 +130,16 @@ a{color:inherit;text-decoration:none;}
 .hero h1 .line:nth-child(2) span{animation-delay:.5s;}
 @keyframes lineUp{to{opacity:1;transform:translateY(0);}}
 .hero-sub{max-width:520px;font-size:1.05rem;color:var(--muted);margin:1.7rem 0 2.4rem;opacity:0;animation:fadeUp 1s var(--ease) .75s forwards;}
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) .9s forwards;}
+.hero-marketplaces{font-family:var(--disp);font-size:clamp(1rem,2.4vw,1.35rem);font-weight:600;color:var(--soft);margin-top:1.8rem;letter-spacing:.01em;opacity:0;animation:fadeUp 1s var(--ease) .72s forwards;}
+.hero-marketplaces i{font-style:normal;color:var(--cyan);margin:0 .5rem;opacity:.7;}
+.hero-services{font-size:.86rem;color:var(--faint);margin-top:.8rem;max-width:640px;line-height:1.8;opacity:0;animation:fadeUp 1s var(--ease) .84s forwards;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.2rem;opacity:0;animation:fadeUp 1s var(--ease) .95s forwards;}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem 2rem;margin-top:2.6rem;}
+.why-item{display:flex;gap:1rem;align-items:flex-start;}
+.why-check{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:linear-gradient(100deg,var(--cyan),#3ee08a);display:flex;align-items:center;justify-content:center;margin-top:.1rem;}
+.why-item b{font-family:var(--disp);display:block;font-size:1.02rem;margin-bottom:.25rem;}
+.why-item span{color:var(--muted);font-size:.88rem;line-height:1.5;}
 .hero-scroll{position:absolute;bottom:2.4rem;left:6vw;z-index:3;display:flex;align-items:center;gap:.6rem;font-size:.75rem;color:var(--faint);letter-spacing:.05em;opacity:0;animation:fadeUp 1s var(--ease) 1.3s forwards;}
 .hero-scroll .sline{width:1px;height:34px;background:linear-gradient(var(--cyan),transparent);animation:scrollLine 2s ease-in-out infinite;}
 @keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
@@ -245,6 +254,8 @@ a{color:inherit;text-decoration:none;}
 .mp-panel.meesho .mp-glow{background:#ff3c78;left:10%;bottom:5%;}
 .mp-panel.blinkit::before{background:radial-gradient(120% 90% at 80% 30%,rgba(255,225,0,.16),#050805 65%);}
 .mp-panel.blinkit .mp-glow{background:#e2ff33;right:8%;top:15%;}
+.mp-panel.jiomart::before{background:radial-gradient(120% 90% at 75% 40%,rgba(0,120,255,.18),#050914 65%);}
+.mp-panel.jiomart .mp-glow{background:#0078ff;right:12%;top:20%;}
 
 /* ---------- popup / modal ---------- */
 .modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(2,3,6,.7);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:5vw;opacity:0;pointer-events:none;transition:opacity .4s var(--ease);}
@@ -496,18 +507,36 @@ footer .fcol a:hover{color:var(--cyan);}
   </div>
 
   <div class="hero-inner wrap">
-    <div class="hero-badge"><span class="dot-live"></span> Now onboarding brands across 5 marketplaces</div>
+    <div class="hero-badge"><span class="dot-live"></span> Trusted marketplace partner for Indian sellers</div>
     <h1>
-      <span class="line"><span>TURN YOUR DESIRE</span></span>
-      <span class="line"><span class="grad-text">INTO DIGITAL GROWTH.</span></span>
+      <span class="line"><span>GROW YOUR BUSINESS</span></span>
+      <span class="line"><span class="grad-text">ACROSS INDIA'S LEADING MARKETPLACES.</span></span>
     </h1>
-    <p class="hero-sub">Marketplace. Technology. Marketing. Growth. Desiretech takes Indian brands from idea to shelf — on Amazon, Myntra, Flipkart, Meesho and Blinkit, and beyond.</p>
+    <div class="hero-marketplaces">Amazon <i>•</i> Flipkart <i>•</i> Myntra <i>•</i> Meesho <i>•</i> JioMart</div>
+    <div class="hero-services">Seller Onboarding&nbsp;&nbsp;|&nbsp;&nbsp;Account Management&nbsp;&nbsp;|&nbsp;&nbsp;Cataloguing&nbsp;&nbsp;|&nbsp;&nbsp;Advertising&nbsp;&nbsp;|&nbsp;&nbsp;Reinstatement</div>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27d%20like%20to%20start%20my%20journey." target="_blank" rel="noopener">START YOUR JOURNEY <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="btn btn-wa" href="https://wa.me/918310747603?text=Hi%20Desiretech%2C%20I%27d%20like%20to%20know%20more%20about%20growing%20my%20business%20on%20marketplaces." target="_blank" rel="noopener">WHATSAPP US <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a class="btn btn-ghost" href="#explore" data-scrollto="explore">EXPLORE SERVICES ↓</a>
     </div>
   </div>
-  <div class="hero-scroll"><div class="sline"></div></div>
+  <div class="hero-scroll"><div class="sline"></div> SCROLL</div>
+</section>
+
+<!-- why desiretech -->
+<section class="section section-tight section-dark" id="why">
+  <div class="glow" style="width:40vw;height:40vw;right:-10%;top:0;background:radial-gradient(circle,rgba(22,119,255,.16),transparent 65%);"></div>
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">The short answer</span></div>
+    <h2 class="story-head reveal" style="font-size:clamp(1.9rem,4.4vw,3rem);">WHY DESIRETECH?</h2>
+    <div class="why-grid">
+      <div class="why-item reveal"><span class="why-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#04150c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Marketplace expertise</b><span>Deep, hands-on experience across Amazon, Flipkart, Myntra, Meesho and JioMart.</span></div></div>
+      <div class="why-item reveal"><span class="why-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#04150c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Seller account management</b><span>Day-to-day handling of your seller account so nothing falls through the cracks.</span></div></div>
+      <div class="why-item reveal"><span class="why-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#04150c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Catalog &amp; listing support</b><span>Accurate, optimised listings that meet each platform's content standards.</span></div></div>
+      <div class="why-item reveal"><span class="why-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#04150c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Advertising optimisation</b><span>Sponsored campaigns managed and tuned to improve return on ad spend.</span></div></div>
+      <div class="why-item reveal"><span class="why-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#04150c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Seller onboarding</b><span>Guided registration and setup to get you selling faster, with fewer rejections.</span></div></div>
+      <div class="why-item reveal"><span class="why-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#04150c" stroke-width="3"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>Dedicated support</b><span>A consistent point of contact who knows your account and responds fast.</span></div></div>
+    </div>
+  </div>
 </section>
 
 <!-- brand story -->
@@ -558,6 +587,7 @@ footer .fcol a:hover{color:var(--cyan);}
       <div class="eco-node" id="eco-n2" data-desc="Account management across India's trusted commerce platform."><button><span class="nd"></span>Flipkart</button></div>
       <div class="eco-node" id="eco-n3" data-desc="Account management for the reseller-first marketplace."><button><span class="nd"></span>Meesho</button></div>
       <div class="eco-node" id="eco-n4" data-desc="Fast onboarding for quick-commerce shelf space."><button><span class="nd"></span>Blinkit</button></div>
+      <div class="eco-node" id="eco-n4b" data-desc="Account management and cataloguing on JioMart."><button><span class="nd"></span>JioMart</button></div>
       <div class="eco-node" id="eco-n5" data-desc="Premium, conversion-focused websites."><button><span class="nd"></span>Website</button></div>
       <div class="eco-node" id="eco-n6" data-desc="Performance marketing that builds attention into demand."><button><span class="nd"></span>Marketing</button></div>
       <div class="eco-node" id="eco-n7" data-desc="Brand partnerships that open new growth channels."><button><span class="nd"></span>Collabs</button></div>
@@ -642,6 +672,21 @@ footer .fcol a:hover{color:var(--cyan);}
         <h4>Digital Marketing</h4>
         <p>Campaigns and content built to turn attention into consistent, measurable demand.</p>
       </div>
+      <div class="tax-card reveal">
+        <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8"><path d="M4 7l8-4 8 4-8 4-8-4zM4 7v10l8 4 8-4V7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>JioMart Account Management</h4>
+        <p>Catalog, pricing and order support to build a steady presence on JioMart.</p>
+      </div>
+      <div class="tax-card reveal" onclick="go('marketplace')" style="cursor:pointer;">
+        <div class="ic" style="background:linear-gradient(140deg,rgba(0,217,255,.22),rgba(22,119,255,.1));"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.8"><path d="M3 12l6-8 6 5 6-7" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 20h18" stroke-linecap="round"/></svg></div>
+        <h4>Advertising Optimisation</h4>
+        <p>Sponsored ad campaigns set up, monitored and tuned across marketplaces to improve return on spend.</p>
+      </div>
+      <div class="tax-card reveal" onclick="go('marketplace')" style="cursor:pointer;">
+        <div class="ic" style="background:linear-gradient(140deg,rgba(255,60,120,.22),rgba(255,32,110,.1));"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff6fa8" stroke-width="1.8"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M16 12h6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg></div>
+        <h4>Account Reinstatement</h4>
+        <p>Support recovering suspended or deactivated seller accounts — appeals, documentation and platform follow-up.</p>
+      </div>
       <div class="tax-card reveal" onclick="go('taxation')" style="cursor:pointer;">
         <div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d9c48a" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"/></svg></div>
         <h4>GST &amp; Taxation Support</h4>
@@ -701,7 +746,7 @@ footer .fcol a:hover{color:var(--cyan);}
       <div class="kicker reveal"><div class="rule"></div><span class="eyebrow">Marketplace services</span></div>
       <h1 class="reveal">YOUR BUSINESS<br><span class="grad-text">DESERVES TO BE SEEN.</span></h1>
       <p class="reveal">Get where your customers are already shopping.</p>
-      <div class="tags reveal"><span>Account Management</span><span>Onboarding</span><span>Catalog Ops</span><span>Brand Collaborations</span></div>
+      <div class="tags reveal"><span>Amazon</span><span>Flipkart</span><span>Myntra</span><span>Meesho</span><span>JioMart</span><span>Blinkit</span></div>
     </div>
   </section>
 
@@ -712,7 +757,7 @@ footer .fcol a:hover{color:var(--cyan);}
         <div class="mp-title reveal">AMAZON</div>
         <div class="mp-sub reveal">Account Management · Catalog · Ads Support</div>
       </div>
-      <div class="mp-right"><span class="mp-idx">01 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+      <div class="mp-right"><span class="mp-idx">01 / 06</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
     </div>
   </div>
   <div class="mp-panel myntra" data-page="myntra-onboarding">
@@ -722,7 +767,7 @@ footer .fcol a:hover{color:var(--cyan);}
         <div class="mp-title reveal">MYNTRA</div>
         <div class="mp-sub reveal">Onboarding · Account Management · Catalog</div>
       </div>
-      <div class="mp-right"><span class="mp-idx">02 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+      <div class="mp-right"><span class="mp-idx">02 / 06</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
     </div>
   </div>
   <div class="mp-panel flipkart" data-modal="flipkart">
@@ -732,7 +777,7 @@ footer .fcol a:hover{color:var(--cyan);}
         <div class="mp-title reveal">FLIPKART</div>
         <div class="mp-sub reveal">Account Management · Listings · Fulfilment</div>
       </div>
-      <div class="mp-right"><span class="mp-idx">03 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+      <div class="mp-right"><span class="mp-idx">03 / 06</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
     </div>
   </div>
   <div class="mp-panel meesho" data-modal="meesho">
@@ -742,7 +787,17 @@ footer .fcol a:hover{color:var(--cyan);}
         <div class="mp-title reveal">MEESHO</div>
         <div class="mp-sub reveal">Account Management · Pricing · Returns</div>
       </div>
-      <div class="mp-right"><span class="mp-idx">04 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+      <div class="mp-right"><span class="mp-idx">04 / 06</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+    </div>
+  </div>
+  <div class="mp-panel jiomart" data-modal="jiomart">
+    <div class="mp-glow"></div>
+    <div class="mp-inner">
+      <div>
+        <div class="mp-title reveal">JIOMART</div>
+        <div class="mp-sub reveal">Account Management · Cataloguing</div>
+      </div>
+      <div class="mp-right"><span class="mp-idx">05 / 06</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
     </div>
   </div>
   <div class="mp-panel blinkit" data-page="blinkit-onboarding">
@@ -752,7 +807,7 @@ footer .fcol a:hover{color:var(--cyan);}
         <div class="mp-title reveal">BLINKIT</div>
         <div class="mp-sub reveal">Onboarding · Quick Commerce Shelf Setup</div>
       </div>
-      <div class="mp-right"><span class="mp-idx">05 / 05</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
+      <div class="mp-right"><span class="mp-idx">06 / 06</span><div class="mp-arrowbtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"/></svg></div></div>
     </div>
   </div>
 
@@ -1050,7 +1105,10 @@ footer .fcol a:hover{color:var(--cyan);}
               <option>Marketplace — Myntra Account Management</option>
               <option>Marketplace — Flipkart</option>
               <option>Marketplace — Meesho</option>
+              <option>Marketplace — JioMart</option>
               <option>Marketplace — Blinkit Onboarding</option>
+              <option>Advertising Optimisation</option>
+              <option>Account Reinstatement</option>
               <option>Website Development</option>
               <option>Digital Marketing</option>
               <option>Marketplace Brand Collaborations</option>
@@ -1219,7 +1277,9 @@ const marketplaceData = {
   flipkart:{ title:'Flipkart', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Structured, hands-on account management across one of India's most trusted commerce platforms.",
     list:['Listing creation & catalog management','Account health & performance tracking','Order, return & grievance coordination','Pricing & inventory optimisation','Ongoing seller-panel support']},
   meesho:{ title:'Meesho', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Account management tuned for Meesho's reseller-driven, value-focused marketplace.",
-    list:['Catalog & competitive pricing management','Account health monitoring','Order & return coordination','Supplier panel support & compliance']}
+    list:['Catalog & competitive pricing management','Account health monitoring','Order & return coordination','Supplier panel support & compliance']},
+  jiomart:{ title:'JioMart', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Account management and cataloguing support to get your products discoverable on JioMart's growing marketplace.",
+    list:['Seller account setup & management','Catalog uploads & content management','Pricing & inventory coordination','Order processing support']}
 };
 document.querySelectorAll('.mp-panel[data-modal]').forEach(panel=>{
   panel.addEventListener('click', ()=>{
