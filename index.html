@@ -429,7 +429,6 @@ footer .fcol a:hover{color:var(--cyan);}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://desire2tech.in/#organization", "name": "Desiretech", "url": "https://desire2tech.in/", "email": "mailto:sell@desire2tech.in", "telephone": "+918310747603", "areaServed": {"@type": "Country", "name": "India"}, "address": {"@type": "PostalAddress", "addressLocality": "Jamshedpur", "addressRegion": "Jharkhand", "addressCountry": "IN"}, "contactPoint": {"@type": "ContactPoint", "telephone": "+918310747603", "email": "sell@desire2tech.in", "contactType": "sales", "areaServed": "IN"}}, {"@type": "LocalBusiness", "@id": "https://desire2tech.in/#localbusiness", "name": "Desiretech", "url": "https://desire2tech.in/", "telephone": "+918310747603", "email": "mailto:sell@desire2tech.in", "address": {"@type": "PostalAddress", "addressLocality": "Jamshedpur", "addressRegion": "Jharkhand", "addressCountry": "IN"}, "areaServed": {"@type": "Country", "name": "India"}}, {"@type": "WebSite", "@id": "https://desire2tech.in/#website", "url": "https://desire2tech.in/", "name": "Desiretech", "publisher": {"@id": "https://desire2tech.in/#organization"}, "inLanguage": "en-IN"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does marketplace account management include?", "acceptedAnswer": {"@type": "Answer", "text": "Seller onboarding, catalog management, product listings, pricing, orders, returns, account health, performance support and marketplace advertising."}}, {"@type": "Question", "name": "Do you manage Amazon seller accounts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Desiretech provides Amazon seller account management, catalog management, listing optimization, advertising support, Brand Registry, Brand Store, A+ Content and account support."}}, {"@type": "Question", "name": "Do you provide Myntra seller onboarding?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Desiretech provides Myntra seller registration, onboarding, catalog management, warehouse-related support, sale-event preparation and ongoing seller support."}}, {"@type": "Question", "name": "Do you manage Flipkart and Meesho seller accounts?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Desiretech provides seller services, account management, catalog management, listing support, advertising support where applicable and seller support."}}, {"@type": "Question", "name": "Do you provide Blinkit seller onboarding?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Blinkit seller onboarding includes registration guidance, catalog upload, listing readiness, compliance guidance and go-live support."}}, {"@type": "Question", "name": "Do you provide SEO and digital marketing in Jamshedpur?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Desiretech provides SEO, digital marketing, Google Ads, Meta Ads, social media marketing and website development in Jamshedpur and across India."}}, {"@type": "Question", "name": "Do you provide GST registration and GST return filing?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. GST registration, GST return filing, ecommerce GST compliance, taxation and business documentation support are available."}}]}</script>
-<meta name="msvalidate.01" content="E266AFAA9AF17B13964F6D9A5D5EDF3C" />
 </head>
 <body>
 
@@ -1261,6 +1260,7 @@ footer .fcol a:hover{color:var(--cyan);}
     <div class="modal-list" id="modal-list"></div>
     <div class="modal-actions">
       <a class="btn btn-wa" id="modal-wa" href="#" target="_blank" rel="noopener">WHATSAPP US →</a>
+      <a class="btn btn-ghost" id="modal-explore" href="#" style="display:none;">Explore Full Page →</a>
       <button class="btn btn-ghost" id="modal-close2">Close</button>
     </div>
   </div>
@@ -1377,13 +1377,15 @@ function openEcoModal(node){
   document.getElementById('modal-desc').textContent = desc;
   document.getElementById('modal-list').innerHTML = '';
   document.getElementById('modal-wa').href = `https://wa.me/918310747603?text=${encodeURIComponent('Hi Desiretech, I want to know more about '+title+'.')}`;
+  document.getElementById('modal-explore').style.display = 'none';
   document.getElementById('modal-overlay').classList.add('open');
 }
 
 /* ---------- marketplace modal ---------- */
 const marketplaceData = {
   amazon:{ title:'Amazon', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Full-service management of your Amazon account — built for consistent visibility and operational hygiene across your entire catalog.",
-    list:['Catalog setup, titles & content optimisation','Listing quality checks & SEO-friendly copy','Account health monitoring & issue resolution','Order, inventory & pricing coordination','Guidance on sponsored ads & promotions']},
+    list:['Catalog setup, titles & content optimisation','Listing quality checks & SEO-friendly copy','Account health monitoring & issue resolution','Order, inventory & pricing coordination','Guidance on sponsored ads & promotions'],
+    url:'/amazon-seller-services/'},
   flipkart:{ title:'Flipkart', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Structured, hands-on account management across one of India's most trusted commerce platforms.",
     list:['Listing creation & catalog management','Account health & performance tracking','Order, return & grievance coordination','Pricing & inventory optimisation','Ongoing seller-panel support']},
   meesho:{ title:'Meesho', tag:'MARKETPLACE — ACCOUNT MANAGEMENT', desc:"Account management tuned for Meesho's reseller-driven, value-focused marketplace.",
@@ -1400,6 +1402,9 @@ document.querySelectorAll('.mp-panel[data-modal]').forEach(panel=>{
     document.getElementById('modal-desc').textContent = d.desc;
     document.getElementById('modal-list').innerHTML = d.list.map(i=>`<div><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>${i}</div>`).join('');
     document.getElementById('modal-wa').href = `https://wa.me/918310747603?text=${encodeURIComponent('Hi Desiretech, I want to know more about '+d.title+' '+d.tag.split('—')[1]+'.')}`;
+    const exploreEl = document.getElementById('modal-explore');
+    if(d.url){ exploreEl.href = d.url; exploreEl.style.display = 'inline-flex'; }
+    else { exploreEl.style.display = 'none'; }
     document.getElementById('modal-overlay').classList.add('open');
   });
 });
