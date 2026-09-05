@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Marketplace Health Audit | DesireTech</title>
+<meta name="description" content="Request a short DesireTech Marketplace Health Audit for your Amazon, Flipkart, Meesho, Myntra, AJIO or JioMart seller account.">
+<style>
+:root{--bg:#07111f;--panel:#0d1b2e;--text:#f4f7fb;--muted:#9aabc0;--accent:#28b8ff;--line:rgba(255,255,255,.11)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0%,#102b46 0,#07111f 45%,#040a12 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+.wrap{width:min(760px,calc(100% - 32px));margin:auto;padding:72px 0}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:12px;font-weight:700}.card{background:rgba(13,27,46,.88);border:1px solid var(--line);border-radius:24px;padding:32px;box-shadow:0 24px 70px rgba(0,0,0,.3)}h1{font-size:clamp(36px,7vw,64px);line-height:.98;margin:12px 0 18px;letter-spacing:-.04em}p{color:var(--muted);line-height:1.6}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{margin-top:16px}.field label{display:block;font-size:13px;font-weight:650;margin-bottom:7px}.field input,.field select{width:100%;padding:14px 15px;border-radius:12px;border:1px solid var(--line);background:#081526;color:var(--text);outline:none;font:inherit}.field input:focus,.field select:focus{border-color:var(--accent)}.full{grid-column:1/-1}.btn{width:100%;margin-top:22px;padding:15px 18px;border:0;border-radius:12px;background:var(--accent);color:#04101b;font-weight:800;font-size:14px;cursor:pointer}.btn:disabled{opacity:.6;cursor:not-allowed}.status{min-height:24px;text-align:center;margin:14px 0 0;font-size:14px}.fine{font-size:12px;color:#71849a;text-align:center;margin-top:16px}@media(max-width:640px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.card{padding:24px}.wrap{padding:40px 0}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="eyebrow">DesireTech Marketplace Audit</div>
+  <h1>See where your marketplace can grow.</h1>
+  <p>Tell us just the essentials. A DesireTech marketplace specialist can review your seller presence and identify practical growth opportunities.</p>
+  <section class="card" aria-label="Marketplace Health Audit form">
+    <form id="marketplace-audit-form" novalidate>
+      <div class="grid">
+        <div class="field"><label for="audit-name">Name *</label><input id="audit-name" name="name" required autocomplete="name" placeholder="Your name"></div>
+        <div class="field"><label for="audit-whatsapp">WhatsApp / Phone *</label><input id="audit-whatsapp" name="whatsapp" required type="tel" autocomplete="tel" placeholder="+91"></div>
+        <div class="field"><label for="audit-marketplace">Marketplace *</label><select id="audit-marketplace" name="marketplace" required><option value="">Select marketplace</option><option>Amazon</option><option>Flipkart</option><option>Meesho</option><option>Myntra</option><option>AJIO</option><option>JioMart</option></select></div>
+        <div class="field"><label for="audit-email">Email</label><input id="audit-email" name="email" type="email" autocomplete="email" placeholder="you@business.com"></div>
+        <div class="field full"><label for="audit-store-url">Store URL</label><input id="audit-store-url" name="store_url" type="url" placeholder="https://..."></div>
+      </div>
+      <button class="btn" id="audit-submit" type="submit">REQUEST MARKETPLACE AUDIT</button>
+      <p class="status" id="audit-status" role="status" aria-live="polite"></p>
+    </form>
+    <div class="fine">We only ask for the information needed to start the audit.</div>
+  </section>
+</main>
+<script>
+/* Production value will be inserted only after the n8n instance has a public HTTPS URL. */
+const N8N_MARKETPLACE_AUDIT_WEBHOOK = 'PASTE_PUBLIC_N8N_WEBHOOK_URL_HERE';
+
+const form = document.getElementById('marketplace-audit-form');
+const button = document.getElementById('audit-submit');
+const statusEl = document.getElementById('audit-status');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  statusEl.textContent = '';
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    statusEl.textContent = 'Please complete the required fields.';
+    return;
+  }
+
+  const data = new FormData(form);
+  const payload = {
+    name: String(data.get('name') || '').trim(),
+    whatsapp: String(data.get('whatsapp') || '').trim(),
+    marketplace: String(data.get('marketplace') || '').trim().toLowerCase(),
+    store_url: String(data.get('store_url') || '').trim(),
+    email: String(data.get('email') || '').trim().toLowerCase(),
+    source: 'desiretech-website-marketplace-audit',
+    source_url: window.location.href,
+    landing_page: window.location.href,
+    timestamp: new Date().toISOString()
+  };
+
+  if (payload.name.length < 2) {
+    statusEl.textContent = 'Please enter your name.';
+    return;
+  }
+  if (payload.whatsapp.length < 7) {
+    statusEl.textContent = 'Please enter a valid WhatsApp / phone number.';
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = 'SENDING…';
+
+  if (N8N_MARKETPLACE_AUDIT_WEBHOOK.startsWith('PASTE_')) {
+    statusEl.textContent = 'The audit form is ready. The secure n8n production connection is still pending.';
+    button.disabled = false;
+    button.textContent = 'REQUEST MARKETPLACE AUDIT';
+    return;
+  }
+
+  try {
+    const response = await fetch(N8N_MARKETPLACE_AUDIT_WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === false) {
+      throw new Error(result.message || 'Submission failed');
+    }
+    statusEl.textContent = result.message || 'Thanks — your marketplace audit request has been received.';
+    form.reset();
+  } catch (error) {
+    statusEl.textContent = 'We could not send the request right now. Please try again or contact us on WhatsApp.';
+  } finally {
+    button.disabled = false;
+    button.textContent = 'REQUEST MARKETPLACE AUDIT';
+  }
+});
+</script>
+</body>
+</html>
